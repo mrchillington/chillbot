@@ -89,4 +89,5 @@ async def modpy(ctx):
     with open("./cogs/mod.py","r") as f:
       await ctx.send(f"```py\n{f.read()}\n```")
 
-client.run(os.getenv("token"))
+token = open("token.txt","r").read()
+client.run(token)

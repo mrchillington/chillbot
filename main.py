@@ -20,6 +20,7 @@ status = cycle([
     "Listening to Jazz",
     "Sipping my coffee",
 ])
+client.remove_command("help")
 #something = open("F:\\Documents\\Chillbotpy\\cogs\\commands.py")
 
 @client.event
@@ -37,17 +38,17 @@ async def change_status():
             name=next(status), url="https://www.twitch.tv/mr_chillington"))
 
 @client.command()
-async def load(ctx, extension):
+async def l(ctx, extension):
     client.load_extension(f"cogs.{extension}")
     print(f"{extension} loaded")
 
 @client.command()
-async def unload(ctx, extension):
+async def u(ctx, extension):
     client.unload_extension(f"cogs.{extension}")
     print(f"{extension} unloaded")
 
 @client.command()
-async def reload(ctx, extension):
+async def r(ctx, extension):
     client.reload_extension(f"cogs.{extension}")
     print(f"{extension} reloaded")
 

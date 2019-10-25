@@ -6,19 +6,30 @@ class Mod(commands.Cog):
         self.client = client
 #commands
     @commands.command()
-    @commands.is_owner()
+    @commands.has_role("Mods")
     async def clear(self, ctx, amount=1):
         await ctx.channel.purge(limit=amount+1)
+#    @commands.command()
+#    async def clear(self, ctx, amount=1):
+#        for role in ctx.guild.roles:
+#            if role.name == "Mods":
+#                await ctx.channel.purge(limit=amount+1)
+#            elif await ctx.send("NO!"):
+#                return
 
     @commands.command()
+    @commands.has_role("Mods")
     async def kick(self, ctx, member : discord.Member, *, reason=None):
         await member.kick(reason=reason)
+#        await ctx.message.delete(delay=5)
 
     @commands.command()
+    @commands.has_role("Mods")
     async def ban(self, ctx, member : discord.Member, *, reason=None):
         await member.ban(reason=reason)
 
     @commands.command()
+    @commands.has_role("Mods")
     async def unban(self, ctx, *, member):
         banned_users = await ctx.guild.bans()
         member_name, member_discriminator = member.split("#")

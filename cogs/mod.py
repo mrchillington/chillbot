@@ -12,19 +12,10 @@ class Mod(commands.Cog):
             await ctx.channel.purge(limit=amount)
             await ctx.send(f"```{amount} messages were deleted```", delete_after=6)
 
-#    @commands.command()
-#    async def clear(self, ctx, amount=1):
-#        for role in ctx.guild.roles:
-#            if role.name == "Mods":
-#                await ctx.channel.purge(limit=amount+1)
-#            elif await ctx.send("NO!"):
-#                return
-
     @commands.command()
     @commands.has_role("Mods")
     async def kick(self, ctx, member : discord.Member, *, reason=None):
         await member.kick(reason=reason)
-#        await ctx.message.delete(delay=5)
 
     @commands.command()
     @commands.has_role("Mods")

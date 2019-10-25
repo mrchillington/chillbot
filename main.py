@@ -22,7 +22,6 @@ status = cycle([
     "Sipping my coffee",
 ])
 client.remove_command("help")
-#something = open("F:\\Documents\\Chillbotpy\\cogs\\commands.py")
 
 @client.event
 async def on_ready():
@@ -38,7 +37,6 @@ async def on_member_join(member):
     role2 = get(member.guild.roles, name="⁣           ߜ🎃SUB🎃ߜ           ⁣")
     role3 = get(member.guild.roles, name="⁣        ߜ👻BOOSTER👻ߜ        ⁣")
     await member.add_roles(role,role2,role3)
-#    await member.add_roles(role2)
 
 @tasks.loop(minutes=3)
 async def change_status():

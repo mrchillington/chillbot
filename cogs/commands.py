@@ -39,7 +39,7 @@ class Cmd(commands.Cog):
             await ctx.send(f"http://www.discordapp.com/channels/{server_id}/{channel_id}", delete_after=60)
         except Exception:
             await ctx.message.delete()
-            await ctx.send("```You need to be in a voice channel.```", delete_after=10)
+            await ctx.send("`"+"`"+"`You need to be in a voice channel.`"+"`"+"`", delete_after=10)
 
 def setup(client):
     client.add_cog(Cmd(client))

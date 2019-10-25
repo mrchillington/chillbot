@@ -1,3 +1,4 @@
 token.txt
 .env
 cogs/__pycache__
+prefixes.json

@@ -40,6 +40,11 @@ class Cmd(commands.Cog):
         except Exception:
             await ctx.message.delete()
             await ctx.send("`"+"`"+"`You need to be in a voice channel.`"+"`"+"`", delete_after=10)
+    
+#    @commands.command()
+#    async def this(self, ctx, emoji: guild.Emoji("thisguy")):
+#        await ctx.send(f"{emoji}")
+
 
 def setup(client):
     client.add_cog(Cmd(client))

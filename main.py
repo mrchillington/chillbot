@@ -3,6 +3,7 @@ import os
 import json
 from discord.ext import commands, tasks
 from itertools import cycle
+from discord.utils import get
 
 def get_prefix(client, message):
     with open("prefixes.json", "r") as f:
@@ -30,6 +31,13 @@ async def on_ready():
     print(f"{client.user} is online")
     async for guild in client.fetch_guilds(limit=150):
         print(f"Logged into " + guild.name)
+
+@client.event
+async def on_member_join(member):
+    role = get(member.guild.roles, name="Spuds")
+    role2 = get(member.guild.roles, name="Streamers")
+    await member.add_roles(role,role2)
+#    await member.add_roles(role2)
 
 @tasks.loop(minutes=3)
 async def change_status():

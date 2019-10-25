@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord.utils import get
 
 class Cmd(commands.Cog):
     def __init__(self, client):
@@ -8,8 +9,13 @@ class Cmd(commands.Cog):
 #    @commands.Cog.listener()
 #    async def on_ready(self):
 #        print(f"{self.client.user} is online")
+#    @commands.Cog.listener()
+#    async def on_member_join(member):
+#        role = get(member.guild.roles, name="Spuds")
+#        await member.add_roles(role)
 
 #commands
+#mod commands
     @commands.command()
     async def ping(self, ctx):
         await ctx.send(f"Pong! Server latency = **{round(self.client.latency * 1000)}ms**")

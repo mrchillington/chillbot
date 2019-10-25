@@ -45,21 +45,32 @@ async def change_status():
         activity=discord.Streaming(
             name=next(status), url="https://www.twitch.tv/mr_chillington"))
 
+#loads specified cog
 @client.command()
+@commands.has_role("Admin")
 async def l(ctx, extension):
     client.load_extension(f"cogs.{extension}")
     print(f"{extension} loaded")
+    await ctx.message.delete()
+    await ctx.send(f"```{extension} reloaded```", delete_after=6)
 
+#unloads specified cog
 @client.command()
+@commands.has_role("Admin")
 async def u(ctx, extension):
     client.unload_extension(f"cogs.{extension}")
     print(f"{extension} unloaded")
+    await ctx.message.delete()
+    await ctx.send(f"```{extension} reloaded```", delete_after=6)
 
+#reloads specified cog
 @client.command()
+@commands.has_role("Admin")
 async def r(ctx, extension):
     client.reload_extension(f"cogs.{extension}")
     print(f"{extension} reloaded")
-
+    await ctx.message.delete()
+    await ctx.send(f"```{extension} reloaded```", delete_after=6)
 for fielname in os.listdir("./cogs"):
     if fielname.endswith(".py"):
         client.load_extension(f"cogs.{fielname[:-3]}")
@@ -80,7 +91,9 @@ async def on_guild_remove(guild):
     with open("prefixes.json", "w") as f:
         json.dump(prefixes, f, indent=4)
 
+#changes the prefix for the server
 @client.command()
+@commands.has_role("Admin")
 async def changeprefix(ctx, prefix):
     with open("prefixes.json", "r") as f:
         prefixes = json.load(f)
@@ -88,15 +101,18 @@ async def changeprefix(ctx, prefix):
     with open("prefixes.json", "w") as f:
         json.dump(prefixes, f, indent=4)
 
+#prints the commands.py file
 @client.command()
 async def commandspy(ctx):
     with open("./cogs/commands.py","r") as f:
       await ctx.send(f"```py\n{f.read()}\n```")
 
+#prints the mod.py file
 @client.command()
 async def modpy(ctx):
     with open("./cogs/mod.py","r") as f:
       await ctx.send(f"```py\n{f.read()}\n```")
+
 #this one took me a sec
 token = open("token.txt","r").read()
 client.run(token)

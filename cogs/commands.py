@@ -49,6 +49,16 @@ class Cmd(commands.Cog):
 #    @commands.command()
 #    async def kappa(self, ctx):
 #        await ctx.send("<:thisguy:636022855993131009>")
+    @commands.command()
+    async def ss(self, ctx):
+        try:
+            channel_id = ctx.message.author.voice.channel.id
+            server_id = ctx.guild.id
+            await ctx.message.delete()
+            await ctx.send(f"http://www.discordapp.com/channels/{server_id}/{channel_id}", delete_after=60)
+        except Exception:
+            await ctx.message.delete()
+            await ctx.send("```You need to be in a voice channel.```", delete_after=10)
 
 def setup(client):
     client.add_cog(Cmd(client))

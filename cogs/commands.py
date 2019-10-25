@@ -1,6 +1,8 @@
 import discord
+import urllib
 from discord.ext import commands
 from discord.utils import get
+from urllib.request import urlopen
 
 class Cmd(commands.Cog):
     def __init__(self, client):
@@ -61,5 +63,11 @@ class Cmd(commands.Cog):
             await ctx.message.delete()
             await ctx.send("```You need to be in a voice channel.```", delete_after=10)
 
+#    @commands.command()
+#    async def dadjokes(self, ctx):
+#        link="https://api.scorpstuff.com/dadjokes.php"
+#        f=urlopen(link)
+#        jokes=f.read()
+#        await ctx.send(jokes)
 def setup(client):
     client.add_cog(Cmd(client))

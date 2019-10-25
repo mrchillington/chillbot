@@ -35,8 +35,9 @@ async def on_ready():
 @client.event
 async def on_member_join(member):
     role = get(member.guild.roles, name="Spuds")
-    role2 = get(member.guild.roles, name="Streamers")
-    await member.add_roles(role,role2)
+    role2 = get(member.guild.roles, name="⁣           ߜ🎃SUB🎃ߜ           ⁣")
+    role3 = get(member.guild.roles, name="⁣        ߜ👻BOOSTER👻ߜ        ⁣")
+    await member.add_roles(role,role2,role3)
 #    await member.add_roles(role2)
 
 @tasks.loop(minutes=3)
@@ -47,30 +48,30 @@ async def change_status():
 
 #loads specified cog
 @client.command()
-@commands.has_role("Admin")
+@commands.is_owner()
 async def l(ctx, extension):
     client.load_extension(f"cogs.{extension}")
     print(f"{extension} loaded")
     await ctx.message.delete()
-    await ctx.send(f"```{extension} reloaded```", delete_after=6)
+    await ctx.send(f"```{extension} reloaded```", delete_after=2)
 
 #unloads specified cog
 @client.command()
-@commands.has_role("Admin")
+@commands.is_owner()
 async def u(ctx, extension):
     client.unload_extension(f"cogs.{extension}")
     print(f"{extension} unloaded")
     await ctx.message.delete()
-    await ctx.send(f"```{extension} reloaded```", delete_after=6)
+    await ctx.send(f"```{extension} reloaded```", delete_after=2)
 
 #reloads specified cog
 @client.command()
-@commands.has_role("Admin")
+@commands.is_owner()
 async def r(ctx, extension):
     client.reload_extension(f"cogs.{extension}")
     print(f"{extension} reloaded")
     await ctx.message.delete()
-    await ctx.send(f"```{extension} reloaded```", delete_after=6)
+    await ctx.send(f"```{extension} reloaded```", delete_after=2)
 for fielname in os.listdir("./cogs"):
     if fielname.endswith(".py"):
         client.load_extension(f"cogs.{fielname[:-3]}")
@@ -93,13 +94,16 @@ async def on_guild_remove(guild):
 
 #changes the prefix for the server
 @client.command()
-@commands.has_role("Admin")
+@commands.is_owner()
 async def changeprefix(ctx, prefix):
+    await ctx.message.delete()
+    await ctx.send(f"```The prefix has been changed to '{prefix}'```", delete_after=10)
     with open("prefixes.json", "r") as f:
         prefixes = json.load(f)
     prefixes[str(ctx.guild.id)] = prefix
     with open("prefixes.json", "w") as f:
         json.dump(prefixes, f, indent=4)
+
 
 #prints the commands.py file
 @client.command()

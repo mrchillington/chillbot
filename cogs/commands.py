@@ -27,6 +27,7 @@ class Cmd(commands.Cog):
         )
         embed.set_author(name="Help")
         embed.add_field(name="Commands\n\n.ping",value="Returns Pong! with latency.",inline=False)
+        embed.add_field(name=".ss",value="Posts a link to ScreenShare in a channel.",inline=False)
         embed.add_field(name=".help",value="Posts this message.",inline=False)
         embed.add_field(name="Mod Commands\n\n.clear",value="Clears 1 message if no number specified",inline=False)
         embed.add_field(name=".kick",value="Kicks a specific member from the server",inline=False)

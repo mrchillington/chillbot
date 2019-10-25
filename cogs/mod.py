@@ -6,9 +6,12 @@ class Mod(commands.Cog):
         self.client = client
 #commands
     @commands.command()
-    @commands.has_role("Mods")
+    @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount=1):
-        await ctx.channel.purge(limit=amount+1)
+            await ctx.message.delete()
+            await ctx.channel.purge(limit=amount)
+            await ctx.send(f"```{amount} messages were deleted```", delete_after=6)
+
 #    @commands.command()
 #    async def clear(self, ctx, amount=1):
 #        for role in ctx.guild.roles:

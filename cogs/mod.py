@@ -40,7 +40,5 @@ class Mod(commands.Cog):
                 await ctx.send(f"Unbanned {user.mention}")
                 return
 
-
-
 def setup(client):
     client.add_cog(Mod(client))

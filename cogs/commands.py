@@ -1,8 +1,7 @@
 import discord
-import urllib
+
 from discord.ext import commands
-from discord.utils import get
-from urllib.request import urlopen
+
 
 class Cmd(commands.Cog):
     def __init__(self, client):
@@ -40,11 +39,19 @@ class Cmd(commands.Cog):
         except Exception:
             await ctx.message.delete()
             await ctx.send("`"+"`"+"`You need to be in a voice channel.`"+"`"+"`", delete_after=10)
-    
-#    @commands.command()
-#    async def this(self, ctx, emoji: guild.Emoji("thisguy")):
-#        await ctx.send(f"{emoji}")
 
+    @commands.command()
+    @commands.has_role("Mods")
+    async def live(self, ctx, *arg):
+        game = " ".join(arg)
+        embed = discord.Embed(
+            title = "https://www.twitch.tv/mr_chillington",
+            colour = discord.Colour.dark_purple(),
+        )
+        embed.set_author(name="Chillington is currently live on")
+        embed.set_thumbnail(url="https://i.imgur.com/NAjJG3E.png")
+        embed.add_field(name="Game being played", value=game, inline=True)
+        await ctx.send(embed=embed)
 
 def setup(client):
     client.add_cog(Cmd(client))

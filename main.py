@@ -34,9 +34,7 @@ async def on_ready():
 @client.event
 async def on_member_join(member):
     role = get(member.guild.roles, name="Spuds")
-    role2 = get(member.guild.roles, name="⁣           ߜ🎃SUB🎃ߜ           ⁣")
-    role3 = get(member.guild.roles, name="⁣        ߜ👻BOOSTER👻ߜ        ⁣")
-    await member.add_roles(role,role2,role3)
+    await member.add_roles(role)
 
 @tasks.loop(minutes=3)
 async def change_status():

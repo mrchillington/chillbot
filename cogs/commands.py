@@ -42,7 +42,7 @@ class Cmd(commands.Cog):
             channel_id = ctx.message.author.voice.channel.id
             server_id = ctx.guild.id
             await ctx.message.delete()
-            await ctx.send(f"http://www.discordapp.com/channels/{server_id}/{channel_id}", delete_after=60)
+            await ctx.send(f"http://www.discordapp.com/channels/{server_id}/{channel_id}", delete_after=300)
         except Exception:
             await ctx.message.delete()
             await ctx.send("`"+"`"+"`You need to be in a voice channel.`"+"`"+"`", delete_after=10)

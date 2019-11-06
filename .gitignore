@@ -1,6 +1,5 @@
 token.txt
 .env
 cogs/__pycache__
-prefixes.json
 noncommands.py
 /.tmp.drivedownload

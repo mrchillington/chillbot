@@ -10,7 +10,7 @@ class Mod(commands.Cog):
     async def clear(self, ctx, amount=1):
             await ctx.message.delete()
             await ctx.channel.purge(limit=amount)
-            await ctx.send(f"```{amount} messages were deleted```", delete_after=6)
+            await ctx.send(f"`"+"`"+"`"+"{amount} messages were deleted"+"`"+"`"+"`", delete_after=6)
 
     @commands.command()
     @commands.has_role("Mods")

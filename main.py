@@ -50,7 +50,7 @@ async def l(ctx, extension):
     client.load_extension(f"cogs.{extension}")
     print(f"{extension} loaded")
     await ctx.message.delete()
-    await ctx.send(f"```{extension} reloaded```", delete_after=2)
+    await ctx.send(f"```{extension} loaded```", delete_after=2)
 
 #unloads specified cog
 @client.command()
@@ -59,7 +59,7 @@ async def u(ctx, extension):
     client.unload_extension(f"cogs.{extension}")
     print(f"{extension} unloaded")
     await ctx.message.delete()
-    await ctx.send(f"```{extension} reloaded```", delete_after=2)
+    await ctx.send(f"```{extension} unloaded```", delete_after=2)
 
 #reloads specified cog
 @client.command()

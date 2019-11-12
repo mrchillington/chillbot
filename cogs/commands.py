@@ -26,6 +26,7 @@ class Cmd(commands.Cog):
         embed.add_field(name=".obs",value="Posts OBS settings",inline=False)
         embed.add_field(name=".help",value="Posts this message.",inline=False)
         embed.add_field(name=".live gamename",value="Posts live message",inline=False)
+        embed.add_field(name=".dl", value="Gives you the list of options avalible ")
 
         embed.add_field(name="Mod Commands\n\n.clear",value="Clears 1 message if no number specified",inline=False)
         embed.add_field(name=".kick",value="Kicks a specific member from the server",inline=False)

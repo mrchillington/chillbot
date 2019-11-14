@@ -82,7 +82,16 @@ class Cmd(commands.Cog):
         embed.add_field(name="New networking code:", value=":white_check_mark: ", inline=True)
         await ctx.send(embed=embed)
 
-
+    @commands.command()
+    @commands.is_owner()
+    async def test(self, ctx):
+        embed = discord.Embed(colour=discord.Colour.blue())
+        embed.add_field(name="This is a test", value="This is a test")
+        embed.add_field(name="*This is a test*", value="*This is a test*")
+        embed.add_field(name="**This is a test**", value="**This is a test**")
+        embed.add_field(name="__This is a test__", value="__This is a test__")
+        embed.set_footer(text="This is a test")
+        await ctx.send(embed=embed)
 
 def setup(client):
     client.add_cog(Cmd(client))

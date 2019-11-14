@@ -24,9 +24,9 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_command_error(self,ctx,exc):
         if isinstance(exc, CommandNotFound):
-            await ctx.send(":warning: Command not found, type **.help** for a list of commands to use.")
+            await ctx.send(":warning: *Command not found, type* **.help** *for a list of commands to use.*")
         if isinstance(exc, MissingRequiredArgument):
-            await ctx.send(":warning: Missing required argument.")
+            await ctx.send(":warning: *Missing required argument.*")
 
     @commands.Cog.listener()
     async def on_reaction_add(self, Reaction, User):
@@ -38,25 +38,24 @@ class events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.content.startswith("hi"):
-            await message.channel.send("Hello!")
-        if message.content.startswith("bye"):
-            await message.channel.edit("bye")
+        return
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
         role = get(member.guild.roles, name="Spuds")
         await member.add_roles(role)
         embed = discord.Embed(colour=discord.Colour.dark_teal())
-        embed.add_field(name="Member has joined:", value=member, inline=True)
-        embed.add_field(name="Role given:", value=role, inline=True)
+        embed.add_field(name="**__Member joined:__**", value=member, inline=True)
+        embed.add_field(name="**__Role given:__**", value=role, inline=True)
         await self.client.get_channel(644218055177797644).send(embed=embed)
-        await self.client.get_channel(342892870350667777).send(embed=embed)
+#        await self.client.get_channel(342892870350667777).send(embed=embed)
         print(f"{member} was given {role}")
 
     @commands.Cog.listener()
     async def on_member_remove(self, member):
-        return
+        embed = discord.Embed(colour=discord.Colour.magenta())
+        embed.add_field(name="**__User has left us:__** :slight_frown: ", value=member)
+        await self.client.get_channel(644218055177797644).send(embed=embed)
 
     @commands.Cog.listener()
     async def on_message_delete(self, message):
@@ -66,8 +65,6 @@ class events(commands.Cog):
     async def on_bulk_message_delete(self, messages):
         return
 
-    @commands.Cog.listener()
-    async def on_
 
 def setup(client):
     client.add_cog(events(client))

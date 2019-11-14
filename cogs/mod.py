@@ -39,7 +39,14 @@ class Mod(commands.Cog):
     @commands.command()
     @commands.has_role("Mods")
     async def ban(self, ctx, member : discord.Member, *, reason=None):
+        await ctx.message.delete(delay=10)
         await member.ban(reason=reason)
+        cat = ctx.message.author #i have no idea what im doing anymore
+        embed = discord.Embed(colour=discord.Colour.orange())
+        embed.add_field(name="**__User banned:__**", value=f"{member}", inline=False)
+        embed.add_field(name="**__Banned by:__**", value=f"{cat}", inline=True)
+        embed.add_field(name="**__Reason:__**", value=f"{reason}", inline=True)
+        await self.client.get_channel(644218055177797644).send(embed=embed)
 
     @commands.command()
     @commands.has_role("Mods")
@@ -49,8 +56,15 @@ class Mod(commands.Cog):
         for ban_entry in banned_users:
             user = ban_entry.user
             if(user.name, user.discriminator) == (member_name, member_discriminator):
+                await ctx.message.delete(delay=10)
                 await ctx.guild.unban(user)
-                await ctx.send(f"Unbanned {user.mention}")
+                cat = ctx.message.author #i have no idea what im doing anymore
+                embed = discord.Embed(colour=discord.Colour.orange())
+                embed.add_field(name="**__User unbanned:__**", value=f"{user.mention}", inline=False)
+                embed.add_field(name="**__Unbanned by:__**", value=f"{cat}", inline=True)
+#                embed.add_field(name="**__Reason:__**", value=f"{reason}", inline=True)
+                await self.client.get_channel(644218055177797644).send(embed=embed)
+#                await ctx.send(f"Unbanned {user.mention}")
                 return
 
     @commands.command()

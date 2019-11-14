@@ -1,5 +1,10 @@
 import discord
+from traceback import format_exc
+from discord import utils, Client
+from discord import Member as DiscordMember
+from discord.ext.commands import Bot, BadArgument, CommandNotFound, MissingRequiredArgument
 from discord.ext import commands
+from discord.utils import get
 
 class Mod(commands.Cog):
     def __init__(self, client):
@@ -13,12 +18,15 @@ class Mod(commands.Cog):
             await ctx.channel.purge(limit=amount)
             embed.add_field(name=f"{amount} messages were deleted", value=f"*By {ctx.message.author}*")
             await ctx.send(embed=embed, delete_after=10)
+            await self.client.get_channel(644218055177797644).send(embed=embed)
             print(f"{amount} messages were deleted | By {ctx.message.author}")
 
     @commands.command()
     @commands.has_role("Mods")
     async def kick(self, ctx, member : discord.Member, *, reason=None):
         await member.kick(reason=reason)
+#        channel = self.client.get_channel(644218055177797644)
+        await self.client.get_channel(644218055177797644).send(f"```{member} has been kicked {reason}```")
 
     @commands.command()
     @commands.has_role("Mods")

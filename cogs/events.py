@@ -4,6 +4,7 @@ from discord import utils, Client
 from discord import Member as DiscordMember
 from discord.ext.commands import Bot, BadArgument, CommandNotFound, MissingRequiredArgument
 from discord.ext import commands
+from discord.utils import get
 
 class events(commands.Cog):
     def __init__(self, client):
@@ -23,7 +24,7 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_command_error(self,ctx,exc):
         if isinstance(exc, CommandNotFound):
-            return
+            await ctx.send(":warning: Command not found, type **.help** for a list of commands to use.")
         if isinstance(exc, MissingRequiredArgument):
             await ctx.send(":warning: Missing required argument.")
 
@@ -34,11 +35,37 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_reaction_remove(self, Reaction, User):
         return
-#    @commands.Cog.listener()
-#    async def on_message(self, Message):
-#        if not Message.author.bot:
-#            await self.client.process_commands(Message)
-#        return
+
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if message.content.startswith("hi"):
+            await message.channel.send("Hello!")
+        if message.content.startswith("bye"):
+            await message.channel.edit("bye")
+
+    @commands.Cog.listener()
+    async def on_member_join(self, member):
+        role = get(member.guild.roles, name="Spuds")
+        await member.add_roles(role)
+        embed = discord.Embed(colour=discord.Colour.dark_teal())
+        embed.add_field(name="Member has joined:", value=member, inline=True)
+        embed.add_field(name="Role given:", value=role, inline=True)
+        await self.client.get_channel(644218055177797644, 342892870350667777).send(f"```{member} has joined and was given the *{role}*```")
+#        await self.client.get_channel(342892870350667777).send(f"```{member} has joined and was given the *{role}*```")
+        print(f"{member} was given {role}")
+
+    @commands.Cog.listener()
+    async def on_member_remove(self, member):
+        return
+
+    @commands.Cog.listener()
+    async def on_message_delete(self, message):
+        return
+
+    @commands.Cog.listener()
+    async def on_bulk_message_delete(self, messages):
+        return
+
 
 def setup(client):
     client.add_cog(events(client))

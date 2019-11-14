@@ -82,5 +82,7 @@ class Cmd(commands.Cog):
         embed.add_field(name="New networking code:", value=":white_check_mark: ", inline=True)
         await ctx.send(embed=embed)
 
+
+
 def setup(client):
     client.add_cog(Cmd(client))

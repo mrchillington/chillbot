@@ -1,8 +1,6 @@
 import discord
 import os
 import json
-import random
-from random import choice
 from discord.ext import commands, tasks
 from itertools import cycle
 from discord.utils import get
@@ -36,11 +34,6 @@ async def on_ready():
     async for guild in client.fetch_guilds(limit=150):
         print(f"Logged into " + guild.name)
 
-@client.event
-async def on_member_join(member):
-    role = get(member.guild.roles, name="Spuds")
-    await member.add_roles(role)
-    print(role)
 
 @tasks.loop(minutes=3)
 async def change_status():

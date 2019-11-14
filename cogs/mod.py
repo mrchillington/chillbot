@@ -47,7 +47,7 @@ class Mod(commands.Cog):
         )
         embed.set_author(name="Chillington is currently live on")
         embed.set_thumbnail(url="https://i.imgur.com/NAjJG3E.png")
-        embed.add_field(name="Game being played", value=game, inline=True)
+        embed.add_field(name="Game being played", value=game.title(), inline=True)
         await ctx.send(embed=embed)
 
 def setup(client):

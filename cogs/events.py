@@ -51,7 +51,7 @@ class events(commands.Cog):
         embed.add_field(name="Member has joined:", value=member, inline=True)
         embed.add_field(name="Role given:", value=role, inline=True)
         await self.client.get_channel(644218055177797644).send(embed=embed)
-        await self.client.get_channel(342892870350667777).send(embed=embed,delete_after=10)
+        await self.client.get_channel(342892870350667777).send(embed=embed)
         print(f"{member} was given {role}")
 
     @commands.Cog.listener()
@@ -66,6 +66,8 @@ class events(commands.Cog):
     async def on_bulk_message_delete(self, messages):
         return
 
+    @commands.Cog.listener()
+    async def on_
 
 def setup(client):
     client.add_cog(events(client))

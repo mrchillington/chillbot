@@ -1,6 +1,8 @@
 import discord
 import os
 import json
+import random
+from random import choice
 from discord.ext import commands, tasks
 from itertools import cycle
 from discord.utils import get
@@ -20,6 +22,9 @@ status = cycle([
     "OBS Studio <3",
     "Listening to Jazz",
     "Sipping my coffee",
+    "Watching some show",
+    "Imagin if Chilly had a schedule"
+    "Imagin if Chilly streamed"
 ])
 client.remove_command("help")
 

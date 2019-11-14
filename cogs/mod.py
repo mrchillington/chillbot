@@ -37,18 +37,40 @@ class Mod(commands.Cog):
                 await ctx.send(f"Unbanned {user.mention}")
                 return
 
+#    @commands.command()
+#    @commands.has_role("Mods")
+#    async def live(self, ctx, *arg):
+#        game = " ".join(arg)
+#        embed = discord.Embed(
+#            title = "https://www.twitch.tv/mr_chillington",
+#            colour = discord.Colour.dark_purple()
+#        )
+#        embed.set_author(name="Chillington is currently live on")
+#        embed.set_thumbnail(url="https://i.imgur.com/NAjJG3E.png")
+#        embed.add_field(name="Game being played", value=game.title(), inline=True)
+#        await ctx.send(embed=embed)
     @commands.command()
     @commands.has_role("Mods")
     async def live(self, ctx, *arg):
-        game = " ".join(arg)
-        embed = discord.Embed(
-            title = "https://www.twitch.tv/mr_chillington",
-            colour = discord.Colour.dark_purple()
-        )
-        embed.set_author(name="Chillington is currently live on")
-        embed.set_thumbnail(url="https://i.imgur.com/NAjJG3E.png")
-        embed.add_field(name="Game being played", value=game.title(), inline=True)
-        await ctx.send(embed=embed)
+        try:
+            game = " ".join(arg)
+            embed = discord.Embed(
+                title = "https://www.twitch.tv/mr_chillington",
+                colour = discord.Colour.dark_purple()
+            )
+            embed.set_author(name="Chillington is currently live on")
+            embed.set_thumbnail(url="https://i.imgur.com/NAjJG3E.png")
+            embed.add_field(name="Game being played", value=game.title(), inline=True)
+            await ctx.send(embed=embed)
+        except Exception:
+            embed = discord.Embed(
+                title = "https://www.twitch.tv/mr_chillington",
+                colour = discord.Colour.dark_purple()
+            )
+            embed.set_author(name="Chillington is currently live on")
+            embed.set_thumbnail(url="https://i.imgur.com/NAjJG3E.png")
+            embed.add_field(name="Game being played", value="Probably playing Dead By Daylight", inline=True)
+            await ctx.send(embed=embed)
 
 def setup(client):
     client.add_cog(Mod(client))

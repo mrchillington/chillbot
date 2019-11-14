@@ -11,9 +11,9 @@ class Mod(commands.Cog):
             embed = discord.Embed(colour=discord.Colour.dark_red())
             await ctx.message.delete()
             await ctx.channel.purge(limit=amount)
-            embed.add_field(name=f"{amount} messages were deleted", value=f"*User of the command {ctx.message.author}*")
+            embed.add_field(name=f"{amount} messages were deleted", value=f"*By {ctx.message.author}*")
             await ctx.send(embed=embed, delete_after=10)
-            print(f"{amount} messages were deleted | User of the command {ctx.message.author}")
+            print(f"{amount} messages were deleted | By {ctx.message.author}")
 
     @commands.command()
     @commands.has_role("Mods")

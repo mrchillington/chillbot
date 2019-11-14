@@ -67,13 +67,6 @@ class Cmd(commands.Cog):
             await ctx.send(embed=embed)
 
     @commands.command()
-    async def sl(self, ctx, arg=None):
-        if arg is None:
-            await ctx.send("something")
-        elif arg == "obs":
-            await ctx.send("Nothing")
-
-    @commands.command()
     async def obs(self, ctx):
         embed = discord.Embed(colour=discord.Colour.purple())
         embed.set_author(name="~OBS Settings~")

@@ -41,22 +41,22 @@ class Cmd(commands.Cog):
                 colour = discord.Colour.orange()
             )
             embed.add_field(name="User\nCommands:\n\n.ping",value="Returns Pong! with latency.",inline=False)
-            embed.add_field(name=".ss",value="Posts a link to ScreenShare in a channel.",inline=False)
-            embed.add_field(name=".obs",value="Posts OBS settings",inline=False)
-            embed.add_field(name=".help",value="Posts this message.",inline=False)
-            embed.add_field(name=".dl", value="Gives you the list of options avalible",inline=False)
-            embed.add_field(name=".help mod", value="Give you the list of commands for mods",inline=False)
+            embed.add_field(name="..ss",value="Posts a link to ScreenShare in a channel.",inline=False)
+            embed.add_field(name="..obs",value="Posts OBS settings",inline=False)
+            embed.add_field(name="..help",value="Posts this message.",inline=False)
+            embed.add_field(name="..dl", value="Gives you the list of options avalible",inline=False)
+            embed.add_field(name="..help mod", value="Give you the list of commands for mods",inline=False)
             await ctx.send(embed=embed)
 
         elif arg == "mod":
             embed = discord.Embed(
                 colour = discord.Colour.orange()
             )
-            embed.add_field(name="Mod Commands:\n\n.clear",value="Clears 1 message if no number specified",inline=False)
-            embed.add_field(name=".kick w/optional reason",value="Kicks a specific member from the server",inline=False)
-            embed.add_field(name=".ban w/optional reason",value="Bans a specific member from the server",inline=False)
-            embed.add_field(name=".unban w/optional reason",value="Unbans a specific banned member",inline=False)
-            embed.add_field(name=".live gamename",value="Posts live message",inline=False)
+            embed.add_field(name="Mod Commands:\n\n..clear",value="Clears 1 message if no number specified",inline=False)
+            embed.add_field(name="..kick w/optional reason",value="Kicks a specific member from the server",inline=False)
+            embed.add_field(name="..ban w/optional reason",value="Bans a specific member from the server",inline=False)
+            embed.add_field(name="..unban w/optional reason",value="Unbans a specific banned member",inline=False)
+            embed.add_field(name="..live gamename",value="Posts live message",inline=False)
             await ctx.send(embed=embed)
 
     @commands.command()
@@ -65,7 +65,7 @@ class Cmd(commands.Cog):
             channel_id = ctx.message.author.voice.channel.id
             server_id = ctx.guild.id
             await ctx.message.delete()
-            await ctx.send(f"http://www.discordapp.com/channels/{server_id}/{channel_id}", delete_after=300)
+            await ctx.send(f"http://www.discordapp.com/channels/{server_id}/{channel_id}")
         except Exception:
             await ctx.message.delete()
             await ctx.send("`"+"`"+"`You need to be in a voice channel.`"+"`"+"`", delete_after=10)
@@ -75,10 +75,10 @@ class Cmd(commands.Cog):
         if arg is None:
             embed = discord.Embed(colour=discord.Colour.dark_gold())
             embed.add_field(name="**__Available options__**:\n"
-            "**.dl** - *Brings up this menu.*\n"
-            "**.dl obs** - *Takes you to the offical OBS site.*\n"
-            "**.dl slobs** - *Takes you to the download page for Streamlabs OBS.*\n"
-            "**.dl ts** - *Takes to the homepage of Twitch Studio Beta.*", value=f"example: .dl <option>")
+            "**..dl** - *Brings up this menu.*\n"
+            "**..dl obs** - *Takes you to the offical OBS site.*\n"
+            "**..dl slobs** - *Takes you to the download page for Streamlabs OBS.*\n"
+            "**..dl ts** - *Takes to the homepage of Twitch Studio Beta.*", value=f"example: .dl <option>")
             await ctx.send(embed=embed)
         elif arg == "obs":
             embed = discord.Embed(title="Click here", url="https://obsproject.com/", description="To download OBS Studio", colour=discord.Colour.darker_grey())
@@ -116,6 +116,10 @@ class Cmd(commands.Cog):
         embed.add_field(name="__This is a test__", value="__This is a test__")
         embed.set_footer(text="This is a test")
         await ctx.send(embed=embed)
+
+    @commands.command()
+    async def booty(self, ctx):
+        await ctx.send(file=discord.File("1f9d0.png"))
 
 def setup(client):
     client.add_cog(Cmd(client))

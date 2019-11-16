@@ -11,6 +11,7 @@ def get_prefix(client, message):
     return prefixes[str(message.guild.id)]
 
 client = commands.Bot(command_prefix=get_prefix)
+"""
 status = cycle([
     "Me eating cookies",
     "Watching paint dry",
@@ -24,6 +25,7 @@ status = cycle([
     "Imagin if Chilly had a schedule"
     "Imagin if Chilly streamed"
 ])
+"""
 client.remove_command("help")
 
 @client.event
@@ -34,13 +36,18 @@ async def on_ready():
     async for guild in client.fetch_guilds(limit=150):
         print(f"Logged into " + guild.name)
 
-
+"""
 @tasks.loop(minutes=3)
 async def change_status():
     await client.change_presence(
         activity=discord.Streaming(
             name=next(status), url="https://www.twitch.tv/mr_chillington"))
-
+"""
+@tasks.loop(minutes=3)
+async def change_status():
+    await client.change_presence(
+        activity=discord.Streaming(
+            name="..help", url="https://www.twitch.tv/mr_chillington"))
 #loads specified cog
 @client.command()
 @commands.is_owner()

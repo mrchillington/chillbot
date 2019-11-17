@@ -119,7 +119,8 @@ class Cmd(commands.Cog):
 
     @commands.command()
     async def booty(self, ctx):
-        await ctx.send(file=discord.File("1f9d0.png"))
+        await ctx.send("https://tenor.com/view/h%c3%a2m-frog-toad-frog-l%e1%ba%afc-wiggle-gif-14557565")
+
 
 def setup(client):
     client.add_cog(Cmd(client))

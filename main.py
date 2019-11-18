@@ -48,6 +48,7 @@ async def change_status():
     await client.change_presence(
         activity=discord.Streaming(
             name="..help", url="https://www.twitch.tv/mr_chillington"))
+
 #loads specified cog
 @client.command()
 @commands.is_owner()
@@ -105,7 +106,6 @@ async def changeprefix(ctx, prefix):
     prefixes[str(ctx.guild.id)] = prefix
     with open("prefixes.json", "w") as f:
         json.dump(prefixes, f, indent=4)
-
 
 #prints the commands.py file
 @client.command()

@@ -121,6 +121,28 @@ class Cmd(commands.Cog):
     async def booty(self, ctx):
         await ctx.send("https://tenor.com/view/h%c3%a2m-frog-toad-frog-l%e1%ba%afc-wiggle-gif-14557565")
 
+    @commands.command()
+    @commands.has_role("Mods")
+    async def live(self, ctx, *arg):
+        try:
+            game = " ".join(arg)
+            embed = discord.Embed(
+                title = "https://www.twitch.tv/mr_chillington",
+                colour = discord.Colour.dark_purple()
+            )
+            embed.set_author(name="Chillington is currently live on")
+            embed.set_thumbnail(url="https://i.imgur.com/NAjJG3E.png")
+            embed.add_field(name="Game being played", value=game.title(), inline=True)
+            await ctx.send(embed=embed)
+        except Exception:
+            embed = discord.Embed(
+                title = "https://www.twitch.tv/mr_chillington",
+                colour = discord.Colour.dark_purple()
+            )
+            embed.set_author(name="Chillington is currently live on")
+            embed.set_thumbnail(url="https://i.imgur.com/NAjJG3E.png")
+            embed.add_field(name="Game being played", value="Probably playing Dead By Daylight", inline=True)
+            await ctx.send(embed=embed)
 
 def setup(client):
     client.add_cog(Cmd(client))

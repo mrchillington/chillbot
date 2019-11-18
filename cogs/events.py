@@ -44,18 +44,22 @@ class events(commands.Cog):
     async def on_member_join(self, member):
         role = get(member.guild.roles, name="Spuds")
         await member.add_roles(role)
+        cat = member.mention
+        pfp = member.avatar_url
         embed = discord.Embed(colour=discord.Colour.dark_teal())
-        embed.add_field(name="**__Member joined:__**", value=member, inline=True)
-        embed.add_field(name="**__Role given:__**", value=role, inline=True)
+        embed.set_author(name=f"{member}\nHas entered the Cafe\nWelcome!", icon_url=pfp)
+        embed.add_field(name=f"{cat} gets a large", value=role, inline=True)
+        #embed.add_field(name="**__Role given:__**", value=role, inline=True)
         await self.client.get_channel(644218055177797644).send(embed=embed)
-#        await self.client.get_channel(342892870350667777).send(embed=embed)
-        print(f"{member} was given {role}")
+        #await self.client.get_channel(342892870350667777).send(embed=embed)
+        print(f"{member} has joined the server and was given: {role}")
 
     @commands.Cog.listener()
     async def on_member_remove(self, member):
         embed = discord.Embed(colour=discord.Colour.magenta())
-        embed.add_field(name="**__User has left us:__** :slight_frown: ", value=member)
+        embed.add_field(name="**__User has left us:__** :slight_frown: ", value=f"{member.mention}")
         await self.client.get_channel(644218055177797644).send(embed=embed)
+        print(f"{member} has left the server... sadface")
 
     @commands.Cog.listener()
     async def on_message_delete(self, message):

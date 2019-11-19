@@ -47,10 +47,10 @@ class events(commands.Cog):
         cat = member.mention
         pfp = member.avatar_url
         embed = discord.Embed(colour=discord.Colour.dark_teal())
-        embed.set_author(name=f"{member}\nHas entered the Cafe\nWelcome!", icon_url=pfp)
-        embed.add_field(name=f"{cat} gets a large", value=role, inline=True)
+        embed.add_field(name="**__Welcome to the Cafe!__**", value=cat)
+        embed.set_footer(text=f"{role} was given to {member}", icon_url=pfp)
         #embed.add_field(name="**__Role given:__**", value=role, inline=True)
-        await self.client.get_channel(644218055177797644).send(embed=embed)
+        await self.client.get_channel(502331932869263362).send(embed=embed)
         #await self.client.get_channel(342892870350667777).send(embed=embed)
         print(f"{member} has joined the server and was given: {role}")
 
@@ -58,7 +58,7 @@ class events(commands.Cog):
     async def on_member_remove(self, member):
         embed = discord.Embed(colour=discord.Colour.magenta())
         embed.add_field(name="**__User has left us:__** :slight_frown: ", value=f"{member.mention}")
-        await self.client.get_channel(644218055177797644).send(embed=embed)
+        await self.client.get_channel(502331932869263362).send(embed=embed)
         print(f"{member} has left the server... sadface")
 
     @commands.Cog.listener()
@@ -69,6 +69,14 @@ class events(commands.Cog):
     async def on_bulk_message_delete(self, messages):
         return
 
+    @commands.Cog.listener()
+    async def on_member_unban(self, guild, member):
+        pfp = member.avatar_url
+        embed = discord.Embed(colour=discord.Colour.orange())
+        embed.add_field(name="**__Unbanned:__**", value=f"{member.mention}")
+        embed.set_footer(text=member ,icon_url=pfp)
+        await self.client.get_channel(502331932869263362).send(embed=embed)
+        print(f"{member} was unbanned")
 
 def setup(client):
     client.add_cog(events(client))

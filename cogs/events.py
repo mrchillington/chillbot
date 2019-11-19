@@ -50,7 +50,8 @@ class events(commands.Cog):
         embed.add_field(name="**__Welcome to the Cafe!__**", value=cat)
         embed.set_footer(text=f"{role} was given to {member}", icon_url=pfp)
         #embed.add_field(name="**__Role given:__**", value=role, inline=True)
-        await self.client.get_channel(502331932869263362).send(embed=embed)
+        await self.client.get_channel(342892870350667777).send(embed=embed)
+        await self.client.get_channel(644218055177797644).send(embed=embed)
         #await self.client.get_channel(342892870350667777).send(embed=embed)
         print(f"{member} has joined the server and was given: {role}")
 

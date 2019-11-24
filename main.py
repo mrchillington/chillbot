@@ -22,8 +22,8 @@ status = cycle([
     "Listening to Jazz",
     "Sipping my coffee",
     "Watching some show",
-    "Imagin if Chilly had a schedule"
-    "Imagin if Chilly streamed"
+    "Imagine if Chilly had a schedule"
+    "Imagine if Chilly streamed"
 ])
 """
 client.remove_command("help")
@@ -75,9 +75,9 @@ async def r(ctx, extension):
     print(f"{extension} reloaded")
     await ctx.message.delete()
     await ctx.send(f"```{extension} reloaded```", delete_after=2)
-for fielname in os.listdir("./cogs"):
-    if fielname.endswith(".py"):
-        client.load_extension(f"cogs.{fielname[:-3]}")
+for filename in os.listdir("./cogs"):
+    if filename.endswith(".py"):
+        client.load_extension(f"cogs.{filename[:-3]}")
 
 @client.event
 async def on_guild_join(guild):

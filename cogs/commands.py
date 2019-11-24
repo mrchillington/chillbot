@@ -25,9 +25,9 @@ class Cmd(commands.Cog):
             embed.add_field(name="..ss", value="Posts a link to ScreenShare in a channel.",inline=False)
             embed.add_field(name="..obs", value="Posts OBS settings",inline=False)
             embed.add_field(name="..help", value="Posts this message.",inline=False)
-            embed.add_field(name="..dl", value="Gives you the list of options avalible",inline=False)
+            embed.add_field(name="..dl", value="Gives you the list of options available",inline=False)
             embed.add_field(name="..booty", value="Posts the high quality booty gif",inline=False)
-            embed.add_field(name="..stream", value="Posts the list of veriables to use",inline=False)
+            embed.add_field(name="..stream", value="Posts the list of variables to use",inline=False)
             embed.add_field(name="..help mod", value="Give you the list of commands for mods",inline=False)
             await ctx.send(embed=embed)
 
@@ -60,7 +60,7 @@ class Cmd(commands.Cog):
             embed = discord.Embed(colour=discord.Colour.dark_gold())
             embed.add_field(name="**__Available options__**:\n"
             "**..dl** - *Brings up this menu.*\n"
-            "**..dl obs** - *Takes you to the offical OBS site.*\n"
+            "**..dl obs** - *Takes you to the official OBS site.*\n"
             "**..dl slobs** - *Takes you to the download page for Streamlabs OBS.*\n"
             "**..dl ts** - *Takes to the homepage of Twitch Studio Beta.*", value=f"example: .dl <option>")
             await ctx.send(embed=embed)
@@ -142,12 +142,12 @@ class Cmd(commands.Cog):
             "\nRemember that your audio bitrate gets added on top of your bitrate so if you want a bit more "
             "accurate number you would **subtract** your **audio bitrate** from the **bitrate**."
             "\n\n__Another note:__ **6000kbps** is the recommended max bitrate however you can go up to **8000kbps** without "
-            "getting yelled at (remmber that if you dont have quality options enabled on your channel you may have "
+            "getting yelled at (remember that if you don't have quality options enabled on your channel you may have "
             "mobile users that can not watch your stream.)"
             "\n\n__Example of what you should do:__ 720p 60fps @ 6000kbps or 8000kbps / 900p 60fps @ 8000kbps but 720p 60fps will have a "
             "better image at the same bitrate."
             "\n\n__Example of what you **shouldn't** do:__ 720p 60fps @ anything under 6000kbps, 900p 60fps @ under 8000kbps or 1080p 60fps @ you guessed it 6000kbps."
-            "\n1080p 60fps @ 8000kbps looks better then @ 6000kbps but just dont do it.")
+            "\n1080p 60fps @ 8000kbps looks better then @ 6000kbps but just don't do it.")
             await ctx.send(embed=embed)
         elif arg == "bpp":
             embed = discord.Embed(title="Figuring out your BPP(Bits Per Pixel).", colour=discord.Colour.dark_red())

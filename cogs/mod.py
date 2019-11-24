@@ -22,7 +22,7 @@ class Mod(commands.Cog):
                 embed.add_field(name="Cleared:", value=f"**{amount}** Message", inline=False)
                 #embed.add_field(name="Command inacted by:", value=f"{ctx.message.author.mention}", inline=False)
                 await ctx.send(embed=embed, delete_after=1)
-                await self.client.get_channel(502331932869263362).send(embed=embed)
+                await self.client.get_channel(644218055177797644).send(embed=embed)
                 print(f"{amount} message was deleted | By {ctx.message.author}")
             elif amount > 1:
                 embed = discord.Embed(colour=discord.Colour.dark_red())
@@ -32,7 +32,7 @@ class Mod(commands.Cog):
                 embed.add_field(name="Cleared:", value=f"**{amount}** Messages", inline=False)
                 #embed.add_field(name="Command inacted by:", value=f"{ctx.message.author.mention}", inline=False)
                 await ctx.send(embed=embed, delete_after=1)
-                await self.client.get_channel(502331932869263362).send(embed=embed)
+                await self.client.get_channel(644218055177797644).send(embed=embed)
                 print(f"{amount} messages was deleted | By {ctx.message.author}")
 
     @commands.command()

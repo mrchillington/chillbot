@@ -144,5 +144,34 @@ class Cmd(commands.Cog):
             embed.add_field(name="Game being played", value="Probably playing Dead By Daylight", inline=True)
             await ctx.send(embed=embed)
 
+    @commands.command()
+    async def stream(self, ctx, arg=None):
+        if arg is None:
+            embed = discord.Embed(title="Here is a list of Variables.", colour=discord.Colour.dark_red())
+            embed.add_field(name="Example ..stream bitrate", value="**bitrate** : Shows you how to find the bitrate."
+            "\n**bpp** : Shows you how to find BPP(Bits Per Pixel)."
+            "\n**masterclass** : Posts a link to EposVox's OBS Masterclass (can also be applies to SLOBS).")
+            await ctx.send(embed=embed)
+        elif arg == "bitrate":
+            embed = discord.Embed(title="Figuring out your bitrate.", colour=discord.Colour.dark_red())
+            embed.add_field(name="Bitrate Calculation", value="Stream res: Width x Height x FPS x BPP / 1000\n"
+            "\nRemember that your audio bitrate gets added on top of your bitrate so if you want a bit more "
+            "accurate number you would **subtract** your **audio bitrate** from the **bitrate**."
+            "\n\n__Another note:__ **6000kbps** is the recommended max bitrate however you can go up to **8000kbps** without "
+            "getting yelled at (remmber that if you dont have quality options enabled on your channel you may have "
+            "mobile users that can not watch your stream.)"
+            "\n\n__Example of what you should do:__ 720p 60fps @ 6000kbps or 8000kbps / 900p 60fps @ 8000kbps but 720p 60fps will have a "
+            "better image at the same bitrate."
+            "\n\n__Example of what you **shouldn't** do:__ 720p 60fps @ anything under 6000kbps, 900p 60fps @ under 8000kbps or 1080p 60fps @ you guessed it 6000kbps."
+            "\n1080p 60fps @ 8000kbps looks better then @ 6000kbps but just dont do it.")
+            await ctx.send(embed=embed)
+        elif arg == "bpp":
+            embed = discord.Embed(title="Figuring out your BPP(Bits Per Pixel).", colour=discord.Colour.dark_red())
+            embed.add_field(name="BPP Calculation", value="(Your upload speed x 1000)/(Width x Height x FPS)\n"
+            "\nIf you want just a general BPP for high motion then use **0.1** or **0.06** for low motion like a CCG.")
+            await ctx.send(embed=embed)
+        elif arg == "masterclass":
+            await ctx.send("https://www.youtube.com/watch?v=nK-Mu7nw5EA&list=PLzo7l8HTJNK-IKzM_zDicTd2u20Ab2pAl")
+
 def setup(client):
     client.add_cog(Cmd(client))

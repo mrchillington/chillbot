@@ -59,7 +59,7 @@ class events(commands.Cog):
     async def on_member_remove(self, member):
         embed = discord.Embed(colour=discord.Colour.magenta())
         embed.add_field(name="**__User has left us:__** :slight_frown: ", value=f"{member.mention}")
-        await self.client.get_channel(502331932869263362).send(embed=embed)
+        await self.client.get_channel(644218055177797644).send(embed=embed)
         print(f"{member} has left the server... sadface")
 
     @commands.Cog.listener()

@@ -111,13 +111,13 @@ async def changeprefix(ctx, prefix):
 @client.command()
 async def commandspy(ctx):
     with open("./cogs/commands.py","r") as f:
-      await ctx.send(f"```py\n{f.read()}\n```")
+        await ctx.send(f"```py\n{f.read()}\n```")
 
 #prints the mod.py file
 @client.command()
 async def modpy(ctx):
     with open("./cogs/mod.py","r") as f:
-      await ctx.send(f"```py\n{f.read()}\n```")
+        await ctx.send(f"```py\n{f.read()}\n```")
 
 #this one took me a sec
 token = open("token.txt","r").read()

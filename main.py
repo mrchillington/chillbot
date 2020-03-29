@@ -120,5 +120,5 @@ async def modpy(ctx):
         await ctx.send(f"```py\n{f.read()}\n```")
 
 #this one took me a sec
-token = open("token.txt","r").read()
+token = open(".token.txt","r").read()
 client.run(token)
